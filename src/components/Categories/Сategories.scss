@@ -1,6 +1,7 @@
 .categories {
   @include base-grid-template;
   @include main-padding-inline;
+
   row-gap: 24px;
   margin-top: 56px;
 
@@ -19,8 +20,9 @@
   }
 
   &__list {
-    grid-column: 1 / -1;
     @include base-grid-template;
+
+    grid-column: 1 / -1;    
     row-gap: 32px;
   }
 

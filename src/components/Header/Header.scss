@@ -1,5 +1,6 @@
 .header {
-  width: 100vw;
+  width: 100%;
+  align-self: center;
   height: var(--header-height);
   border-bottom: 1px solid var(--gray-white-color);
   display: flex;
@@ -9,9 +10,8 @@
 
   @include on-tablet {
     gap: 16px;
-    justify-content: unset;
 
-    --header-height: 64px
+    --header-height: 64px;
   }
 
   @include on-desktop {
@@ -46,9 +46,8 @@
     display: none !important;
 
     @include on-tablet {
-      width: 100%;
+      // width: 100%;
       display: flex !important;
-      justify-content: end;
     }
   }
 }

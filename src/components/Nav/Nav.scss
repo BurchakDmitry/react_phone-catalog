@@ -3,6 +3,11 @@
   display: none;
 
   @include on-tablet {
-    display: flex;
+    display: block;
+    width: 100%;
+  }
+
+  @include on-desktop-lg {
+    @include base-grid-template;
   }
 }

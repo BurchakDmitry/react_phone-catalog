@@ -1,5 +1,6 @@
 .page-notification {
   @include base-grid-template;
+  @include main-padding-inline;
 
   &.on-home {
     margin-block: 24px;

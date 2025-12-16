@@ -21,10 +21,8 @@
     &.is__menu {
       background-image: url('../../assets/images/logo-burger.svg');
     }
-  }
 
-  @include on-desktop {
-    &-link {
+    @include on-desktop {
       width: 80px;
       height: 28px;
     }
