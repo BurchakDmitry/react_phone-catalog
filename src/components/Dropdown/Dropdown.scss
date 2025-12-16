@@ -1,0 +1,94 @@
+.dropdown {
+  width: 100%;
+  box-sizing: border-box;
+
+  &__select {
+    box-sizing: border-box;
+    position: relative;
+
+    &-title {
+      box-sizing: border-box;
+      border: 1px solid var(--gray-placeholders-color);
+      padding: 10px 0 10px 12px;
+      border-radius: 8px;
+
+      @include transition;
+
+      &.is__close {
+        &::after {
+          content: "";
+          position: absolute;
+          right: 12px;
+          top: 12px;
+          width: 16px;
+          height: 16px;
+          background-image: url('../../assets/images/icons/arrow-down.svg');
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center center;
+          cursor: pointer;
+        }
+      }
+
+      &.is__active {
+        border: 1px solid var(--gray-primary-color);
+
+        &::after {
+          content: "";
+          position: absolute;
+          right: 12px;
+          top: 12px;
+          width: 16px;
+          height: 16px;
+          background-image: url('../../assets/images/icons/arrow-down.svg');
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center center;
+          transform: rotate(180deg);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid var(--gray-placeholders-color);
+    border-radius: 8px;
+    position: absolute;
+    top: 30px;
+    pointer-events: none;
+    opacity: 0;
+    background-color: #fff;
+
+    @include transition;
+
+    &.is__active {
+      top: 42px;
+      opacity: 1;
+      pointer-events: all;
+      z-index: 300;
+    }
+
+    &-item {
+      color: var(--gray-secondary-color);
+
+      font-size: 14px;
+      line-height: 21px;
+      cursor: pointer;
+      padding: 6px 0 6px 12px;
+
+      @include transition;
+
+      &:hover {
+        color: var(--gray-primary-color);
+      }
+
+      &.is__active {
+        color: var(--gray-primary-color);
+      }
+    }
+  }
+}
