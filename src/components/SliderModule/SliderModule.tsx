@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './SliderModule.scss';
+import classNames from 'classnames';
 // import { SliderGallery } from '../SliderGallery';
 // import { Gadget } from '../../types/typeGadget';
 // import classNames from 'classnames';
@@ -54,6 +55,38 @@ export const SliderModule = () => {
         ></button>
         {/* gallery block */}
         <div className="slider__block__gallery">
+          <article
+            // key={index}
+            className={classNames(
+              'gallery  is__active',
+              // {
+              //   is__active: activeSlide === index,
+              // }
+            )}
+          >
+            <div
+              className={classNames(
+                'gallery__order  is__active',
+                // {
+                //   is__active: activeSlide === index,
+                //   is__reverse: index % 2 !== 0,
+                //   is__standart: index % 2 === 0,
+                // }
+              )}
+            >
+              <div className="gallery__order-wrapper">
+                <h3 className="gallery__order-title">
+                  Now available is our store!
+                </h3>
+                <p className="gallery__order-slogan">Be the first!</p>
+              </div>
+              <div>
+                <a className="gallery__order-btn" href="#">
+                  Order now
+                </a>
+              </div>
+            </div>
+          </article>
           {/* {phones?.length &&
             phones.map((phone, index) => {
               return (

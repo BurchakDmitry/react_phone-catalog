@@ -138,8 +138,9 @@
   width: 100%;
   height: 100%;
   display: flex;
+  justify-content: space-between;
   position: absolute;
-  padding-inline: 25px;
+  padding: 10px;
   opacity: 0;
   pointer-events: none;
   box-sizing: border-box;
@@ -229,14 +230,14 @@
       box-sizing: border-box;
       align-self: center;
       width: 50%;
-      height: 70%;
+      height: 100%;
       background-color: rgb(34,34,34);
       border-radius: 20px;
-      padding: 10px;
+      padding: 50px;
     }
 
     @include on-desktop {
-      padding: 50px;
+      // padding: 50px;
     }
 
     &-wrapper {
@@ -251,7 +252,7 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: bold;
-
+      
       @include on-tablet {
         width: 210px;
         font-size: 1.7em;
