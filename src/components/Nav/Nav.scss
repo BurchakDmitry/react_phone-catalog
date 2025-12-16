@@ -1,0 +1,8 @@
+.nav {
+  box-sizing: border-box;
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+}

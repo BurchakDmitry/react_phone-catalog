@@ -1,0 +1,33 @@
+
+.header__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 16px;
+
+  @include on-desktop {
+    padding: 18px 24px;
+  }
+
+  &-link {
+    display: block;
+    width: 64px;
+    height: 22px;
+    background-image: url('../../assets/images/logo.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: all .3 ease-in-out;
+
+    &.is__menu {
+      background-image: url('../../assets/images/logo-burger.svg');
+    }
+  }
+
+  @include on-desktop {
+    &-link {
+      width: 80px;
+      height: 28px;
+    }
+  }
+}

@@ -1,7 +1,10 @@
 import './App.scss';
+import { Header } from './components/Header';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+export const App = () => {
+  return (
+    <div className="App">
+      <Header />
+    </div>
+  );
+};

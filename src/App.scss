@@ -1,1 +1,31 @@
-// not empty
+* {
+  font-family: Mont, sans-serif;
+}
+
+body {
+  color: var(--primary-color);
+  overflow-x: hidden;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
+.main__title {
+  font-weight: 800;
+  font-style: Bold;
+  font-size: 22px;
+  color: var(--gray-primary-color);
+
+  @include on-tablet {
+    grid-column: 1 / 9;
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
