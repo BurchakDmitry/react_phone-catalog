@@ -2,6 +2,7 @@
   @include base-grid-template;
   @include main-padding-inline;
 
+  justify-self: self-end;
   margin-top: 64px;
   box-sizing: border-box;
   padding-block: 32px;

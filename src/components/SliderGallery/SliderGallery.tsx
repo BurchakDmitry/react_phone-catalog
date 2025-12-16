@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import { Phone } from '../../types/typeGadget';
+import { Gadget } from '../../types/typeGadget';
 
 type Props = {
-  phone: Phone;
+  phone: Gadget;
   index: number;
 };
 
