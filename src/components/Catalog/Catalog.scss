@@ -17,6 +17,7 @@
   &__filter {
     @include base-grid-template;
 
+    cursor: pointer;
     margin-top: 32px;
 
     @include on-tablet {
@@ -28,7 +29,6 @@
       grid-column: span 2;
       flex-direction: column;
       gap: 4px;
-
       width: 100%;
 
       @include on-tablet {

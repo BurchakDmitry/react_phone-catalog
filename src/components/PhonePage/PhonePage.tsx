@@ -2,25 +2,24 @@
 // import { useAppSelector } from '../../App';
 import { Breadcrumbs } from '../Breadcrumbs';
 import './PhonePage.scss';
-// import { Phone } from '../../slices/gadgets';
-// import { Catalog } from '../Catalog';
+import { Catalog } from '../Catalog';
+import { useMemo } from 'react';
+import { useAppSelector } from '../../types/hooks';
+// import { useSearchParams } from 'react-router-dom';
 
 export const PhonePage = () => {
-  // const gadgets = useAppSelector(state => state.data.items);
-  // const [phones, setPhones] = useState<Phone[] | null>(null);
+  const products = useAppSelector(state => state.products.products);
+  // const [searchParams, setSearchParams] = useSearchParams();
 
-  // useEffect(() => {
-  //   const filteredGadegts = gadgets.filter(
-  //     gadget => gadget.category === 'phones',
-  //   );
-
-  //   setPhones(filteredGadegts);
-  // }, [gadgets]);
+  const phonesMemo = useMemo(
+    () => [...products].filter(product => product.category === 'phones'),
+    [products],
+  );
 
   return (
     <section id="phonePage" className="content">
       <Breadcrumbs />
-      {/* {phones?.length && <Catalog gadgets={phones} gadgetType="Phones" />} */}
+      <Catalog gadgets={phonesMemo} gadgetType="Phones" />
     </section>
   );
 };

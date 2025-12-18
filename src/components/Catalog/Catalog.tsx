@@ -2,11 +2,11 @@
 import { TitleNotification } from '../TitleNotification';
 import './Catalog.scss';
 import { Dropdown } from '../Dropdown';
-import { Gadget } from '../../types/typeGadget';
+import { Product } from '../../types/typeGadget';
 import { Card } from '../Card';
 
 type Props = {
-  gadgets: Gadget[];
+  gadgets: Product[];
   gadgetType: string;
 };
 
