@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { Gadget } from '../../types/typeGadget';
+import { Product } from '../../types/typeGadget';
 import { Card } from '../Card';
 import './Devices.scss';
 import classNames from 'classnames';
 
 type Props = {
   title: string;
-  devices: Gadget[];
+  devices: Product[];
   isNew?: boolean;
 };
 

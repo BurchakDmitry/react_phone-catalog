@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import './Card.scss';
-import { Gadget } from '../../types/typeGadget';
+import { Product } from '../../types/typeGadget';
 
 type Props = {
-  device: Gadget;
+  device: Product;
   isNew?: boolean;
   onCatalog?: boolean;
 };
@@ -28,8 +28,8 @@ export const Card: React.FC<Props> = ({ device, isNew, onCatalog }) => {
       <div className="card__img-wrapper">
         <img
           className="card__img"
-          src={`../${device.images[0]}`}
-          alt={device.namespaceId}
+          src={`../${device.image}`}
+          alt={device.name}
         />
       </div>
       <h2 className="card__title">
@@ -37,11 +37,11 @@ export const Card: React.FC<Props> = ({ device, isNew, onCatalog }) => {
       </h2>
       <div className="card__prices">
         {isNew ? (
-          <p className="card__price discount">${device.priceDiscount}</p>
+          <p className="card__price discount">${device.price}</p>
         ) : (
           <>
-            <p className="card__price discount">${device.priceDiscount}</p>
-            <p className="card__price regular">${device.priceRegular}</p>
+            <p className="card__price discount">${device.price}</p>
+            <p className="card__price regular">${device.fullPrice}</p>
           </>
         )}
       </div>

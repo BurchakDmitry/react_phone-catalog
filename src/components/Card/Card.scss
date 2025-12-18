@@ -32,8 +32,6 @@
   }
 
   &__img {
-    cursor: zoom-in;
-
     display: block;
     justify-content: center;
     justify-items: center;
@@ -44,7 +42,6 @@
     height: 100%;
     max-height: 129px;
     margin: 0 auto;
-    border: 1px solid red;
 
     object-fit: contain;
 
@@ -58,12 +55,6 @@
     @include on-desktop {
       max-width: 206px;
       max-height: 196px;
-    }
-
-    &:hover {
-      position: absolute;
-      transform: scale(1.43);
-      animation: hover-img 0.3s ease forwards;
     }
 
     &-wrapper {

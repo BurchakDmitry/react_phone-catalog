@@ -1,27 +1,27 @@
+import { useMemo } from 'react';
+import { useAppSelector } from '../../types/hooks';
 import './BrandModels.scss';
-// import { Devices } from '../Devices';
-// import { useAppSelector } from '../../App';
+import { getLatestModels } from '../../utils/getLatestModels';
+import { Devices } from '../Devices';
+import { getUniqueModels } from '../../utils/getUniqueModels';
 
 export const BrandModels = () => {
-  // const gadgets = useAppSelector(state => state.data.items);
-  // const getLatestModels = () => {
-  //   if (gadgets?.length) {
-  //     return gadgets
-  //       .filter(gadget => gadget.name.includes('14'))
-  //       .filter(gadget => gadget.name.includes('128GB'))
-  //       .reverse();
-  //   } else {
-  //     return gadgets;
-  //   }
-  // };
-
-  // const newModels = getLatestModels();
+  const gadgets = useAppSelector(state => state.products.products);
+  const latestModelsMemo = useMemo(() => getLatestModels(gadgets), [gadgets]);
+  const uniqueModelsMemo = useMemo(
+    () => getUniqueModels(latestModelsMemo, 'color'),
+    [latestModelsMemo],
+  );
 
   return (
     <section id="brandModels" className="brand__models">
-      {/* {newModels !== null && (
-        <Devices title={'Brand new models'} devices={newModels} isNew={true} />
-      )} */}
+      {
+        <Devices
+          title={'Brand new models'}
+          devices={uniqueModelsMemo}
+          isNew={true}
+        />
+      }
     </section>
   );
 };
