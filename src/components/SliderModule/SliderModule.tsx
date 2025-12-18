@@ -1,32 +1,23 @@
 import { useEffect, useMemo, useState } from 'react';
 import './SliderModule.scss';
 import classNames from 'classnames';
-import { getProducts } from '../../api/getProducts';
 import { Product } from '../../types/typeGadget';
 import { getLatestModels } from '../../utils/getLatestModels';
 import { getUniqueModels } from '../../utils/getUniqueModels';
+import { useAppSelector } from '../../types/hooks';
 
 export const SliderModule = () => {
-  const [latestModels, setLatestModels] = useState<Product[] | []>([]);
   const [activeSlide, setActiveSlide] = useState(0);
+  const products = useAppSelector(state => state.products.products);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const data = await getProducts();
-
-        if (data !== null) {
-          setLatestModels(getLatestModels(data));
-        }
-      } catch {
-        throw new Error('error');
-      }
-    })();
-  }, []);
+  const latestModelsMemo: [] | Product[] = useMemo(
+    () => getLatestModels(products),
+    [products],
+  );
 
   const uniqueModelsMemo: [] | Product[] = useMemo(
-    () => getUniqueModels(latestModels, 'color'),
-    [latestModels],
+    () => getUniqueModels(latestModelsMemo, 'color'),
+    [latestModelsMemo],
   );
 
   useEffect(() => {

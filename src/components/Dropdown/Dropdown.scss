@@ -1,32 +1,35 @@
 .dropdown {
-  width: 100%;
   box-sizing: border-box;
+  width: 100%;
 
   &__select {
-    box-sizing: border-box;
     position: relative;
+    box-sizing: border-box;
 
     &-title {
       box-sizing: border-box;
-      border: 1px solid var(--gray-placeholders-color);
       padding: 10px 0 10px 12px;
+      border: 1px solid var(--gray-placeholders-color);
       border-radius: 8px;
 
       @include transition;
 
       &.is__close {
         &::after {
+          cursor: pointer;
           content: "";
+
           position: absolute;
-          right: 12px;
           top: 12px;
+          right: 12px;
+
           width: 16px;
           height: 16px;
+
           background-image: url('../../assets/images/icons/arrow-down.svg');
           background-repeat: no-repeat;
-          background-size: contain;
           background-position: center center;
-          cursor: pointer;
+          background-size: contain;
         }
       }
 
@@ -34,51 +37,59 @@
         border: 1px solid var(--gray-primary-color);
 
         &::after {
+          cursor: pointer;
           content: "";
+
           position: absolute;
-          right: 12px;
           top: 12px;
+          right: 12px;
+          transform: rotate(180deg);
+
           width: 16px;
           height: 16px;
+
           background-image: url('../../assets/images/icons/arrow-down.svg');
           background-repeat: no-repeat;
-          background-size: contain;
           background-position: center center;
-          transform: rotate(180deg);
-          cursor: pointer;
+          background-size: contain;
         }
       }
     }
   }
 
   &__list {
+    pointer-events: none;
+
+    position: absolute;
+    top: 30px;
+
     display: flex;
     flex-direction: column;
+
     width: 100%;
     border: 1px solid var(--gray-placeholders-color);
     border-radius: 8px;
-    position: absolute;
-    top: 30px;
-    pointer-events: none;
+
     opacity: 0;
     background-color: #fff;
 
     @include transition;
 
     &.is__active {
-      top: 42px;
-      opacity: 1;
       pointer-events: all;
       z-index: 300;
+      top: 42px;
+      opacity: 1;
     }
 
     &-item {
-      color: var(--gray-secondary-color);
+      cursor: pointer;
+
+      padding: 6px 0 6px 12px;
 
       font-size: 14px;
       line-height: 21px;
-      cursor: pointer;
-      padding: 6px 0 6px 12px;
+      color: var(--gray-secondary-color);
 
       @include transition;
 

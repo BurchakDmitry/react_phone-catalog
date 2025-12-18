@@ -1,15 +1,16 @@
 .card {
-  box-sizing: border-box;
-  padding: 32px;
   display: flex;
-  flex-direction: column;
-
-  row-gap: 8px;
-  border-radius: 8px;
-  border: 1px solid var(--gray-white-color);
-  color: var(--gray-primary-color);
-  min-width: 212px;
   grid-column: span 3;
+  flex-direction: column;
+  row-gap: 8px;
+
+  box-sizing: border-box;
+  min-width: 212px;
+  padding: 32px;
+  border: 1px solid var(--gray-white-color);
+  border-radius: 8px;
+
+  color: var(--gray-primary-color);
 
   @include on-tablet {
     grid-column: span 5;
@@ -31,17 +32,23 @@
   }
 
   &__img {
-    border: 1px solid red;
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
-    max-width: 148px;
-    max-height: 129px;
-    justify-items: center;
-    justify-content: center;
-    justify-self: center;
-    margin: 0 auto;
+    cursor: zoom-in;
+
     display: block;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+
+    width: 100%;
+    max-width: 148px;
+    height: 100%;
+    max-height: 129px;
+    margin: 0 auto;
+    border: 1px solid red;
+
+    object-fit: contain;
+
+    transition: all .3s ease-out;
 
     @include on-tablet {
       max-width: 173px;
@@ -53,19 +60,22 @@
       max-height: 196px;
     }
 
-    transition: all .3s ease-out;
-    cursor: zoom-in;
-
     &:hover {
       position: absolute;
-      animation: hover-img 0.3s ease forwards;
       transform: scale(1.43);
+      animation: hover-img 0.3s ease forwards;
     }
 
     &-wrapper {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       width: 100%;
-      height: 100%;
       max-width: 148px;
+      height: 100%;
       max-height: 129px;
 
       @include on-tablet {
@@ -77,22 +87,19 @@
         max-width: 206px;
         max-height: 196px;
       }
-
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
   }
 
   &__title {
-    font-weight: 300;
-    font-size: 14px;
-    line-height: 21px;
-    height: 58px;
-    text-align: left;
     display: flex;
     align-items: end;
+
+    height: 58px;
+
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 21px;
+    text-align: left;
 
     & a {
       &:hover {
@@ -102,17 +109,19 @@
   }
 
   &__prices {
-    box-sizing: border-box;
     display: flex;
     gap: 8px;
-    font-weight: 800;
+
+    box-sizing: border-box;
+
     font-size: 22px;
+    font-weight: 800;
   }
 
   &__price {
     &.regular {
-      color: var(--gray-secondary-color);
       font-weight: 400;
+      color: var(--gray-secondary-color);
       text-decoration: line-through;
     }
   }
@@ -126,11 +135,13 @@
 
   &__params {
     display: flex;
-    box-sizing: border-box;
-    padding-block: 8px;
     flex-direction: column;
     gap: 8px;
     justify-content: space-around;
+
+    box-sizing: border-box;
+    padding-block: 8px;
+
     font-size: 12px;
     line-height: 15px;
   }
@@ -149,27 +160,30 @@
   }
 
   &__buttons {
-    margin-top: 8px;
     display: flex;
-    justify-content: space-between;
     gap: 8px;
+    justify-content: space-between;
+    margin-top: 8px;
   }
 
   &__btn-buy {
+    cursor: pointer;
+
     box-sizing: border-box;
     width: 70%;
     padding-block: 9.5px;
-    background-color: var(--accent-blue-color);
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
     border: none;
-    transition: all .3s ease-in-out;
+    border-radius: 8px;
 
-    font-weight: 700;
     font-size: 14px;
+    font-weight: 700;
     line-height: 21px;
+    color: white;
     text-align: center;
+
+    background-color: var(--accent-blue-color);
+
+    transition: all .3s ease-in-out;
 
     &:hover {
       background-color: var(--accent-pink-color);
@@ -177,15 +191,18 @@
   }
 
   &__btn-like {
-    border-radius: 50%;
+    cursor: pointer;
+
     width: 40px;
     height: 40px;
     border: 1px solid var(--gray-placeholders-color);
+    border-radius: 50%;
+
     background-color: inherit;
-    cursor: pointer;
     background-image: url('../../assets/images/icons/like.svg');
     background-repeat: no-repeat;
     background-position: center center;
+
     transition: border .3s ease-in-out;
 
     &:hover {

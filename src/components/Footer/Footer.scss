@@ -2,12 +2,14 @@
   @include base-grid-template;
   @include main-padding-inline;
 
-  justify-self: self-end;
-  margin-top: 64px;
-  box-sizing: border-box;
-  padding-block: 32px;
   row-gap: 32px;
   align-items: center;
+  justify-self: self-end;
+
+  box-sizing: border-box;
+  margin-top: 64px;
+  padding-block: 32px;
+
   color: var(--gray-secondary-color);
 
   @include on-desktop {
@@ -15,13 +17,15 @@
   }
 
   &__logo {
-    grid-column: 1 / -1;
     display: block;
+    grid-column: 1 / -1;
+
     width: 89px;
     height: 32px;
+
     background-image: url('../../assets/images/logo.svg');
-    background-position: center center;
     background-repeat: no-repeat;
+    background-position: center center;
     background-size: contain;
 
     @include on-tablet {
@@ -34,18 +38,19 @@
   }
 
   &__list {
-    grid-column: 1 / -1;
     display: flex;
+    grid-column: 1 / -1;
     flex-direction: column;
     row-gap: 16px;
-    text-transform: uppercase;
     justify-content: space-between;
-    font-weight: 800;
+
     font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
 
     @include on-tablet {
-      flex-direction: row;
       grid-column: span 4;
+      flex-direction: row;
     }
 
     @include on-desktop {
@@ -62,17 +67,21 @@
   }
 
   &__btn {
-    grid-column: 1 / -1;
-    border: none;
-    background-color: inherit;
-    font-size: 12px;
-    color: var(--gray-secondary-color);
-    font-weight: 700;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
     cursor: pointer;
+
+    display: flex;
+    grid-column: 1 / -1;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray-secondary-color);
+
+    background-color: inherit;
 
     @include transition;
 
@@ -87,14 +96,16 @@
 
     &::after {
       content: "";
+
       width: 32px;
       height: 32px;
+      border: 1px solid var(--gray-placeholders-color);
+      border-radius: 50%;
+
       background-image: url('../../assets/images/icons/arrow-up.svg');
       background-repeat: no-repeat;
       background-position: center center;
       background-size: 16px;
-      border: 1px solid var(--gray-placeholders-color);
-      border-radius: 50%;
 
       @include transition;
     }

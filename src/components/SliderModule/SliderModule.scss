@@ -1,8 +1,8 @@
 
 .slider {
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 
   @include on-tablet {
     @include main-padding-inline;
@@ -24,11 +24,13 @@
     }
 
     &__btn {
-      box-sizing: border-box;
-      display: none;
-      max-width: 32px;
-      width: 100%;
       cursor: pointer;
+
+      display: none;
+
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 32px;
 
       @include transition;
 
@@ -38,19 +40,24 @@
 
       @include on-tablet {
         display: flex;
+        grid-column: span 1;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        grid-column: span 1;
-        border-radius: 32px;
+
         border: 1px solid var(--gray-placeholders-color);
+        border-radius: 32px;
+
         background-color: inherit;
 
         &::before {
           content: '';
+
           display: block;
+
           width: 6px;
           height: 9px;
+
           background-repeat: no-repeat;
           background-position: center center;
           background-size: contain;
@@ -76,14 +83,16 @@
 
     &__gallery {
       position: relative;
+
       box-sizing: border-box;
-      height: 100%;
       width: 100%;
+      height: 100%;
+
       background-color: #000000e5;
 
       @include on-tablet {
-        border-radius: 8px;
         grid-column: span 10;
+        border-radius: 8px;
       }
 
       @include on-desktop {
@@ -94,8 +103,8 @@
 
   &__pagination {
     box-sizing: border-box;
-    height: 24px;
     width: 100%;
+    height: 24px;
     margin-top: 8px;
 
     &__list {
@@ -110,9 +119,12 @@
 
       &::before {
         content: '';
+
         display: block;
-        height: 4px;
+
         width: 14px;
+        height: 4px;
+
         background-color: var(--gray-placeholders-color);
 
         @include transition;
@@ -136,13 +148,15 @@
 }
 
 .gallery {
-  width: 100%;
-  height: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 8px;
-  opacity: 1;
+
   box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+
+  opacity: 1;
 
   &.is_reverse {
     flex-direction: row-reverse;
@@ -162,14 +176,16 @@
     @include on-tablet {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      box-sizing: border-box;
       align-self: center;
+      justify-content: space-between;
+
+      box-sizing: border-box;
       width: 50%;
       height: 100%;
-      background-color: rgb(34,34,34);
-      border-radius: 20px;
       padding: 30px;
+      border-radius: 20px;
+
+      background-color: rgb(34,34,34);
     }
 
     @include on-desktop {
@@ -177,17 +193,18 @@
     }
 
     &-wrapper {
-      box-sizing: border-box;
       display: flex;
       flex-direction: column;
       gap: 10px;
+      box-sizing: border-box;
     }
 
     &-title {
+      font-weight: bold;
       background: linear-gradient(90deg, rgb(136,70,221), rgb(211,85,219));
       background-clip: text;
+
       -webkit-text-fill-color: transparent;
-      font-weight: bold;
 
       @include on-tablet {
         width: 210px;
@@ -213,24 +230,28 @@
     }
 
     &-btn {
-      display: inline-block;
-      margin-top: 10px;
-      box-sizing: border-box;
-      border-radius: 30px;
-      padding: 10px 20px;
-      font-size: .6em;
-      text-transform: uppercase;
-      background: inherit;
-      color: #fff;
       cursor: pointer;
+
+      display: inline-block;
+
+      box-sizing: border-box;
+      margin-top: 10px;
+      padding: 10px 20px;
       border: 1px solid var(--gray-placeholders-color);
+      border-radius: 30px;
+
+      font-size: .6em;
+      color: #fff;
+      text-transform: uppercase;
+
+      background: inherit;
       
       @include transition;
 
       @include on-desktop {
-        font-size: .8em;
-        padding: 20px 35px;
         margin-top: 20px;
+        padding: 20px 35px;
+        font-size: .8em;
       }
 
       &:hover {
@@ -241,14 +262,17 @@
   }
 
   &__main {
-    width: 100%;
     display: flex;
     flex-direction: column;
-    padding-top: 50px;
     gap: 10px;
+
+    width: 100%;
+    padding-top: 50px;
+
     font-weight: 400;
-    background-position: center center;
+
     background-repeat: no-repeat;
+    background-position: center center;
     background-size: contain;
 
     @include on-tablet {
@@ -260,8 +284,8 @@
     }
 
     @include on-tablet {
-      border-radius: 6px;
       width: 50%;
+      border-radius: 6px;
     }
   }
 }

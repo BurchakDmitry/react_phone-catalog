@@ -7,9 +7,9 @@
 
   &__header {
     @include base-grid-template;
-    
-    justify-content: center;
+
     align-items: center;
+    justify-content: center;
 
     // align-content: center;
   }
@@ -23,8 +23,8 @@
   }
 
   &__buttons {
-    grid-column: 3 / -1;
     display: flex;
+    grid-column: 3 / -1;
     gap: 16px;
     justify-self: end;
 
@@ -34,14 +34,17 @@
   }
 
   &__btn {
+    cursor: pointer;
+
     width: 32px;
     height: 32px;
     border: 1px solid var(--gray-white-color);
-    background-color: inherit;
     border-radius: 50%;
+
+    background-color: inherit;
     background-repeat: no-repeat;
     background-position: center center;
-    cursor: pointer;
+
     transition: border .3s ease-in-out;
 
     &.disabled {
@@ -53,8 +56,8 @@
       background-image: url('../../assets/images/icons/arrow-right.svg');
 
       &.active {
-        background-image: url('../../assets/images/icons/slider-arrow-right.svg');
         border: 1px solid var(--gray-placeholders-color);
+        background-image: url('../../assets/images/icons/slider-arrow-right.svg');
       }
     }
 
@@ -62,8 +65,8 @@
       background-image: url('../../assets/images/icons/arrow-left.svg');
 
       &.active {
-        background-image: url('../../assets/images/icons/slider-arrow-left.svg');
         border: 1px solid var(--gray-placeholders-color);
+        background-image: url('../../assets/images/icons/slider-arrow-left.svg');
       }
     }
 
@@ -86,24 +89,25 @@
     position: relative;
 
     &-wrap {
-      width: 100%;
-      grid-column: 1 / -1;
+      scrollbar-width: none;
 
-      display: grid;
-      column-gap: 16px;
       overflow-x: auto;
+      display: grid;
       grid-auto-flow: column;
+      grid-column: 1 / -1;
+      column-gap: 16px;
 
-      @include on-desktop {
-        grid-auto-columns: 32px;
-      }
+      width: 100%;
+      
+      -ms-overflow-style: none;
 
       &::-webkit-scrollbar {
         display: none;
       }
-      
-      -ms-overflow-style: none;
-      scrollbar-width: none;  
+
+      @include on-desktop {
+        grid-auto-columns: 32px;
+      }  
     }
   }
 }

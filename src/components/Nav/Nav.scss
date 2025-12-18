@@ -1,6 +1,6 @@
 .nav {
-  box-sizing: border-box;
   display: none;
+  box-sizing: border-box;
 
   @include on-tablet {
     display: block;

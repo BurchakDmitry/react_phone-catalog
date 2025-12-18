@@ -36,10 +36,11 @@
 
 @mixin base-grid-template {
   display: grid;
-  column-gap: 16px;
-  box-sizing: border-box;
   grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
   justify-content: center;
+
+  box-sizing: border-box;
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);

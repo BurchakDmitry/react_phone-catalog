@@ -4,10 +4,10 @@
   &__qty {
     @include base-grid-template;
 
-    color: var(--gray-secondary-color);
-    font-weight: 400;
-    font-size: 14px;
     margin-top: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--gray-secondary-color);
 
     &-text {
       grid-column: 1 / -1;
@@ -24,15 +24,16 @@
     }
 
     &-item {
-      width: 100%;
       display: flex;
+      grid-column: span 2;
       flex-direction: column;
       gap: 4px;
-      grid-column: span 2;
+
+      width: 100%;
 
       @include on-tablet {
-        max-width: 136px;
         grid-column: span 3;
+        max-width: 136px;
       }
 
       @include on-desktop {
@@ -49,8 +50,8 @@
     }
 
     &-title {
-      font-weight: 700;
       font-size: 12px;
+      font-weight: 700;
       line-height: 100%;
       color: var(--gray-secondary-color);
     }
@@ -62,8 +63,8 @@
     @include on-tablet {
       @include main-padding-inline;
     }
-    
-    margin-top: 24px;
+
     row-gap: 40px;
+    margin-top: 24px;
   }
 }

@@ -8,8 +8,8 @@ html {
 }
 
 body {
-  color: var(--primary-color);
   overflow-x: hidden;
+  color: var(--primary-color);
 }
 
 .App {
@@ -24,9 +24,9 @@ body {
 }
 
 .main__title {
+  font-size: 22px;
   font-weight: 800;
   font-style: Bold;
-  font-size: 22px;
   color: var(--gray-primary-color);
 
   @include on-tablet {
