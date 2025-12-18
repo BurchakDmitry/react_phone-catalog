@@ -125,7 +125,7 @@
         }
       }
 
-      &.is__active {
+      &.is_active {
         &::before {
           content: '';
           background-color: var(--gray-primary-color);
@@ -143,6 +143,10 @@
   padding: 8px;
   opacity: 1;
   box-sizing: border-box;
+
+  &.is_reverse {
+    flex-direction: row-reverse;
+  }
 
   @include on-tablet {
     border-radius: 8px;
@@ -243,7 +247,6 @@
     padding-top: 50px;
     gap: 10px;
     font-weight: 400;
-    background-image: url('../../../public/img/phones/apple-iphone-14-pro/spaceblack/01.webp');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
