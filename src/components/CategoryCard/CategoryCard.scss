@@ -71,6 +71,14 @@
       background-size: 185%;
     }
   }
+
+  &__description-qty {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--gray-secondary-color);
+
+  }
 }
 
 @keyframes hover-category {
