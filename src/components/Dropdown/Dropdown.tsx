@@ -1,34 +1,41 @@
 import './Dropdown.scss';
 
 import classNames from 'classnames';
-import { useRef, useState } from 'react';
-// import { useClickOutside } from '../../hooks/useClickOutside';
+import { useEffect, useRef, useState } from 'react';
+import { SetURLSearchParams } from 'react-router-dom';
 
 type Props = {
-  options: string[] | number[];
+  options: string[];
+  search: URLSearchParams;
+  keyQuery: string;
+  setQuery: SetURLSearchParams;
 };
 
-export const Dropdown: React.FC<Props> = ({ options }) => {
+export const Dropdown: React.FC<Props> = ({
+  options,
+  keyQuery,
+  search,
+  setQuery,
+}) => {
   const [isActive, setIsActive] = useState(false);
-  const [currentOption, setCurrentOption] = useState<string | number>(
-    options[0],
-  );
+  const [currentOption, setCurrentOption] = useState<string>(options[0]);
   const ref = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    search.set(keyQuery, currentOption.toLowerCase());
+    setQuery(search);
+  }, [currentOption]);
 
   function handleOpenList() {
     setIsActive(prevState => (!prevState ? true : false));
   }
 
-  function handleChangeOption(option: string | number) {
+  function handleChangeOption(option: string) {
     handleOpenList();
+    search.set(keyQuery, option.toLowerCase());
+    setQuery(search);
     setCurrentOption(option);
   }
-
-  // useClickOutside(ref, () => {
-  //   if (ref !== null) {
-  //     setIsActive(false);
-  //   }
-  // });
 
   return (
     <article className="dropdown">
