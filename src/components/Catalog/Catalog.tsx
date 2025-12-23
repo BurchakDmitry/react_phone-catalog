@@ -1,62 +1,86 @@
-// import { Phone } from '../../slices/gadgets';
 import { TitleNotification } from '../TitleNotification';
 import './Catalog.scss';
 import { Dropdown } from '../Dropdown';
 import { Product } from '../../types/typeGadget';
-// import { Card } from '../Card';
+import { Card } from '../Card';
 import { useSearchParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
+import classNames from 'classnames';
 
 type Props = {
   gadgets: Product[];
   gadgetType: string;
 };
 
+const DEFAULT_ITEMS_PER_PAGE = 8;
+const DEFAULT_SORT = 'newest';
+
 export const Catalog: React.FC<Props> = ({ gadgets, gadgetType }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  // const [currentPage, setCurrentPage] = useState<Product[]>([]);
-  // const [pages, setPages] = useState<Product[][]>([]);
-  // const [qtyPages, setQtyPages] = useState(0);
+  const currentPage = Number(searchParams.get('index')) || 0;
+  const itemsPerPage =
+    Number(searchParams.get('perPage')) || DEFAULT_ITEMS_PER_PAGE;
+  const sortType = searchParams.get('sort') || DEFAULT_SORT;
+
+  const sortedGadgets = useMemo(() => {
+    const sorted = [...gadgets];
+
+    switch (sortType) {
+      case 'newest':
+        return sorted.sort((a, b) => b.year - a.year);
+      case 'cheaper':
+        return sorted.sort((a, b) => a.price - b.price);
+      case 'expensive':
+        return sorted.sort((a, b) => b.price - a.price);
+      default:
+        return sorted.sort((a, b) => b.year - a.year);
+    }
+  }, [gadgets, sortType]);
+
+  const totalPages = Math.ceil(sortedGadgets.length / itemsPerPage);
+  const safePage = currentPage >= totalPages ? 0 : currentPage;
+  const displayedGadgets = useMemo(() => {
+    const startIndex = safePage * itemsPerPage;
+
+    return sortedGadgets.slice(startIndex, startIndex + itemsPerPage);
+  }, [sortedGadgets, safePage, itemsPerPage]);
 
   useEffect(() => {
-    const filter = searchParams.get('filter');
-    const sort = searchParams.get('sort');
+    const index = searchParams.get('index');
 
-    if (sort !== null) {
-      // const sortedGudgets = () =>
-      //   [...gadgets].sort((a, b) => {
-      //     switch (sort) {
-      //       case 'newest':
-      //         return b.year - a.year;
-
-      //       case 'cheaper':
-      //         return a.price - b.price;
-
-      //       case 'expensive':
-      //         return b.price - a.price;
-
-      //       default:
-      //         return a.year - b.year;
-      //     }
-      //   });
-
-      if (filter !== null) {
-        // const filteredGudgets = () => [...sortedGudgets()].slice(0, +filter);
-
-        // setQtyPages(Math.ceil(gadgets.length / +filter));
-        // setCurrentPage(filteredGudgets());
-        const arr = [];
-
-        for (let i = 0; i < gadgets.length; i += +filter) {
-          const page = [...gadgets].slice(i, +filter);
-
-          arr.push(page);
-        }
-
-        // setPages(arr);
-      }
+    if (index === null) {
+      return;
     }
-  }, [searchParams]);
+
+    if (+index >= safePage) {
+      searchParams.set('index', `0`);
+    }
+  }, [searchParams, safePage]);
+
+  const updateSearchParams = (updates: Record<string, string>) => {
+    const newParams = new URLSearchParams(searchParams);
+
+    Object.entries(updates).forEach(([key, value]) => {
+      newParams.set(key, value);
+    });
+    setSearchParams(newParams);
+  };
+
+  const handleChangePage = (page: number) => {
+    updateSearchParams({ index: String(page) });
+  };
+
+  const handleNextPage = () => {
+    if (safePage < totalPages - 1) {
+      updateSearchParams({ index: String(safePage + 1) });
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (safePage > 0) {
+      updateSearchParams({ index: String(safePage - 1) });
+    }
+  };
 
   return (
     <section className="catalog">
@@ -80,31 +104,52 @@ export const Catalog: React.FC<Props> = ({ gadgets, gadgetType }) => {
             options={['8', '16', '24', '32']}
             search={searchParams}
             setQuery={setSearchParams}
-            keyQuery={'filter'}
+            keyQuery={'perPage'}
           />
         </div>
       </div>
 
       <section className="catalog__gadgets">
-        {/* {currentPage.map(page => (
+        {displayedGadgets.map(gadget => (
           <Card
-            device={page}
+            device={gadget}
             onCatalog={true}
-            key={`phone-page_${page.itemId}`}
+            key={`gadget-page_${gadget.itemId}`}
           />
-        ))} */}
+        ))}
 
-        <div className="catalog__pagination pagination">
-          <button className="pagination__btn left" type="button"></button>
-          <div className="pagination__pages">
-            {/* {pages.map((_, index) => (
-              <button className="pagination__btn page" type="button">
-                {index + 1}
-              </button>
-            ))} */}
+        {totalPages > 1 && (
+          <div className="catalog__pagination pagination">
+            <button
+              className="pagination__btn left"
+              type="button"
+              onClick={handlePrevPage}
+              disabled={safePage === 0}
+            />
+
+            <div className="pagination__pages">
+              {Array.from({ length: totalPages }).map((_, index) => (
+                <button
+                  key={index}
+                  className={classNames('pagination__btn', {
+                    active: index === safePage,
+                  })}
+                  type="button"
+                  onClick={() => handleChangePage(index)}
+                >
+                  {index + 1}
+                </button>
+              ))}
+            </div>
+
+            <button
+              className="pagination__btn right"
+              type="button"
+              onClick={handleNextPage}
+              disabled={safePage === totalPages - 1}
+            />
           </div>
-          <button className="pagination__btn right" type="button"></button>
-        </div>
+        )}
       </section>
     </section>
   );

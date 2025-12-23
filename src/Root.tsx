@@ -23,7 +23,7 @@ export const Root = () => {
         throw new Error();
       }
     })();
-  }, []);
+  }, [dispatch]);
 
   return (
     <BrowserRouter>
