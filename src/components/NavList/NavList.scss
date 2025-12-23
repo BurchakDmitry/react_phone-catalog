@@ -49,7 +49,7 @@
       @include transition;
     }
 
-  &.is-active {
+  &.is_active {
     color: var(--gray-primary-color);
   
       &::before {

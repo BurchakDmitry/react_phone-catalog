@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import './NavList.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 export const Pages = ['Home', 'Phones', 'Tablets', 'Accessories'];
 
@@ -9,7 +9,7 @@ type Props = {
 };
 
 export const NavList: React.FC<Props> = ({ isHeader }) => {
-  // const searchParams = new URLSearchParams();
+  const location = useLocation().pathname;
 
   return (
     <ul className={classNames('list', { is_header: isHeader })}>
@@ -17,7 +17,9 @@ export const NavList: React.FC<Props> = ({ isHeader }) => {
         return (
           <NavLink
             key={linkName}
-            className={classNames('nav__link')}
+            className={classNames('nav__link', {
+              is_active: location.startsWith(`/${linkName.toLowerCase()}`),
+            })}
             to={`/${linkName.toLowerCase()}`}
           >
             {linkName}
